@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <h2>配置信息</h2>
+  <hr>
+  <p>{{diagnostic}}</p>
+  <form #orderForm="ngForm">
+    <div class="form-group">
+      <label for="power">实施时间：</label>
+      <ng-select [options]="times" [(ngModel)]="model.time" [ngModelOptions]="{standalone: true}" name="time"></ng-select>
+    </div>
+    <div class="form-group">
+      <label for="project">项目名称：</label>
+      <ng-select [options]="projects" [(ngModel)]="model.project" [ngModelOptions]="{standalone: true}" name="project"></ng-select>
+    </div>
+    <div class="form-group">
+      <label for="vdc">VDC：</label>
+      <div #vdcRef="ngModel" ngbRadioGroup name="vdc" [(ngModel)]="model.vdc">
+        <label *ngFor="let vdc of vdcs" class="btn btn-primary">
+          <input type="radio" [value]="vdc.id"> {{vdc.name}}
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="area">可用区：</label>
+      <div #areaRef="ngModel" ngbRadioGroup name="area" [(ngModel)]="model.area">
+        <label *ngFor="let area of areas" class="btn btn-primary">
+          <input type="radio" [value]="area.id"> {{area.name}}
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="subNetwork">子网：</label>
+      <ng-select [options]="subNetworks" [(ngModel)]="model.subNetwork" [ngModelOptions]="{standalone: true}" name="subNetwork"></ng-select>
+      <ng-select [options]="subNetworkIps" [(ngModel)]="model.subNetworkIp" [ngModelOptions]="{standalone: true}" name="subNetworkIp"></ng-select>
+    </div>
+    <div class="form-group">
+      <label for="cpu">CPU：</label>
+      <div #cpuRef="ngModel" ngbRadioGroup name="cpu" [(ngModel)]="model.cpu">
+        <label *ngFor="let cpu of cpus" class="btn btn-primary">
+          <input type="radio" [value]="cpu"> {{cpu}}
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="memory">Memory：</label>
+      <div ngbRadioGroup name="memory" [(ngModel)]="model.memory">
+        <label *ngFor="let memory of memorys" class="btn btn-primary">
+          <input type="radio" [value]="memory"> {{memory}}
+        </label>
+      </div>
+    </div>
+    <!--<div class="form-group">
+      <label for="name">实例名称：</label>
+      <md-slider
+        class="example-margin"
+        [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumb-label]="thumbLabel"
+        [tick-interval]="tickInterval"
+        [value]="value"
+        [vertical]="vertical">
+      </md-slider>
+    </div>-->
+    <div class="form-group">
+      <label for="name">实例名称：</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name">
+    </div>
+    
+    <button type="submit" class="btn btn-default">立即购买</button>
+  </form>
+</div>

@@ -1,0 +1,5 @@
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+    <ul class="nav nav-pills flex-column">
+        <li *ngFor="let product of products" class="nav-item"><a routerLink="products/{{ product.url }}" routerLinkActive="active" class="nav-link">{{ product.name }}</a></li>
+    </ul>
+</nav>

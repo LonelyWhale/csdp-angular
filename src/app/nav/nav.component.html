@@ -1,0 +1,16 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a href="" class="navbar-brand">{{ title }}</a>
+  <div class="collapse navbar-collapse" id="navbars">
+    <ul class="navbar-nav mr-auto">
+      <li *ngFor="let menu of menus" class="nav-item">
+        <a routerLink="{{menu.url}}" routerLinkActive="active" [routerLinkActiveOptions]="[{exact: true}]" class="nav-link">{{ menu.name }}</a>
+      </li>
+    </ul>
+    <div>
+      <ng-select [options]="domains" [ngModel]="domain" (ngModelChange)="domainChange($event)"></ng-select>
+    </div>
+  </div>
+</nav>
